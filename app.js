@@ -3,7 +3,6 @@ const cityName = document.querySelector("#city");
 const apiKey = "QLbc1nElAQlOl4nxKAUcn34GgAi8pgay";
 const ul = document.querySelector("#WeatherInformation");
 let cityObject; let cityKey;
-
 // const cityData = btn.addEventListener("click", async function (e) {
 //     const city = cityName.value;
 //     const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}&offset=1`)

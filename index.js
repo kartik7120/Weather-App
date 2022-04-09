@@ -4,7 +4,8 @@ const express = require("express");
 const path = require("path")
 // import { Express as express } from "express";
 const app = express();
-const icons = require("./assets/icons/icon");
+app.use(express.static(path.join(__dirname, 'public')))
+const icons = require("./public/icons/icon");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

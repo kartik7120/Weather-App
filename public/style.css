@@ -1,0 +1,13 @@
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+  transition-property: display;
+  transition-duration: 1s;
+}
+
+#card {
+  margin: 0 auto;
+}
