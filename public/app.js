@@ -8,36 +8,7 @@ const cityHead = document.querySelector("#LocalizedName");
 const WeatherDescription = document.querySelector("#WeatherDescription");
 const card = document.querySelector("#card");
 const icon = document.querySelector("#Icon");
-// const Icon = document.querySelector("#Icon");
-// console.log(icons);
-
-// const cityData = btn.addEventListener("click", async function (e) {
-//     const city = cityName.value;
-//     const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}&offset=1`)
-//         .then((response) => {
-//             return response.json();
-//             // const data = await response.json()
-
-//             //     .catch((err) => {
-//             //         console.log("JSON CANNOT BE PARSED");
-//             //     })
-//         }).then((d) => {
-//             // console.log("YOUR WEATHER INFORMATION");
-//             // console.log(d[0].Country.EnglishName);
-//             // console.log(d[0]);
-//             console.log(d[0].Key);
-//             cityObject = d[0];
-//             cityKey = d[0].Key;
-//             return fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}`, { mode: 'no-cors' })
-//         }).then((response) => {
-//             return response.json();
-//         }).then((d) => {s
-//             console.log(d);
-//         })
-//         .catch((err) => {
-//             console.log("OH NO ERROR", err);
-//         })
-// })
+const displayDate = document.querySelector("#Date");
 
 btn.addEventListener("click", async () => {
     try {
@@ -68,16 +39,21 @@ btn.addEventListener("click", async () => {
         const li10 = document.createElement("li");
         // LocalObservationDateTime
         weatherIconNumber = cityWeather[0].WeatherIcon;
+        console.log(cityWeather[0].EpochTime);
+        const date = new Date(cityWeather[0].EpochTime * 1000);
         console.log(weatherIconNumber);
+        displayDate.textContent = `${date}`;
         console.log(cityWeather[0].ApparentTemperature.Imperial.Value, cityWeather[0].ApparentTemperature.Imperial.Unit);
-        li1.textContent = `Temperature = ${cityWeather[0].ApparentTemperature.Imperial.Value} `;
-        li1.innerHTML += `<img src="/icons/fahrenheit.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
+        li1.textContent = `Temperature : ${cityWeather[0].ApparentTemperature.Imperial.Value} `;
+        li1.innerHTML += `<img src="/icons/fahrenheit.gif" class="img-fluid" id="unit" alt="A gif of a son"> / ${cityWeather[0].ApparentTemperature.Metric.Value} <img src="/icons/celsius.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
 
         // li3.textContent = `Weather Text = ${cityWeather[0].WeatherText}`;
         // li4.textContent = `Wind Speed= ${cityWeather[0].Wind.Speed.Imperial.Value} ${cityWeather[0].Wind.Speed.Imperial.Unit}`;
-        li5.textContent = `Relative Humidity = ${cityWeather[0].RelativeHumidity}`;
+        li5.textContent = `Relative Humidity : ${cityWeather[0].RelativeHumidity}`;
+        li5.innerHTML += ` <img src="/icons/drop.gif" class="img-fluid" id="unit" alt="A gif of a son">`
         // li7.textContent = `Pressure = ${cityWeather[0].Pressure.Imperial.Value} ${cityWeather[0].Pressure.Imperial.Unit}`;
-        li8.textContent = `CloudCover = ${cityWeather[0].CloudCover}`;
+        li8.textContent = `CloudCover : ${cityWeather[0].CloudCover}`;
+        li8.innerHTML += ` <img src="/icons/clouds.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
         // li9.textContent = `Wind Direction = ${cityWeather[0].Wind.Direction.Degrees}° ${cityWeather[0].Wind.Direction.English}`;
         const DesktopLink = cityWeather[0].Link;
         const MoblieLink = cityWeather[0].MoblieLink;
@@ -97,7 +73,7 @@ btn.addEventListener("click", async () => {
         WeatherDescription.textContent = cityWeather[0].WeatherText;
 
         if (IsDayTime === true) {
-            WeatherDescription.innerHTML += '<br>DayTime <img src="/icons/drop.gif" class="img-fluid" id="unit" alt="A gif of a son">';
+            WeatherDescription.innerHTML += '<br>DayTime ';
         }
         else {
             WeatherDescription.innerHTML += "<br>NightTime";
@@ -136,14 +112,8 @@ btn.addEventListener("click", async () => {
 
         // const dailyReport = await response3.json();
 
-        console.log("Daily report = ", dailyReport);
+        // console.log("Daily report = ", dailyReport);
     } catch (error) {
         console.log(error);
     }
 })
-
-// 0:
-// ApparentTemperature:
-// Imperial: {Value: 94, Unit: 'F', UnitType: 18}
-// Metric: {Value: 34.4, Unit: 'C', UnitType: 17}
-// [[Prototype]]: Object
