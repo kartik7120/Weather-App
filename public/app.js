@@ -14,6 +14,8 @@ const pressure = document.querySelector("#Pressure");
 const windDirectionAngle = document.querySelector("#windDirectionAngle");
 const windDirectionCompass = document.querySelector("#windDirectionCompass");
 const rightWidget = document.querySelector("#Right-Widgit");
+const longPhraseDayText = document.querySelector("#LongPhraseDay");
+const longPhraseNightText = document.querySelector("#LongPhraseNight");
 
 btn.addEventListener("click", async (e) => {
     e.stopPropagation();
@@ -118,11 +120,66 @@ btn.addEventListener("click", async (e) => {
 
         const dailyReport = await response3.json();
 
-        console.log("Daily report = ", dailyReport);
+        // console.log("Daily report = ", dailyReport);
         console.log(dailyReport.DailyForecasts[0].Day);
         const dayForecast = dailyReport.DailyForecasts[0].Day;
         const nightForecast = dailyReport.DailyForecasts[0].Night;
-        console.log(nightForecast);
+        console.log("Day Forecast =", dayForecast);
+        console.log("Night Forecast =", nightForecast);
+        const EvaporationTranspiration = dayForecast.Evapotranspiration;
+        const EvaporationTranspirationValue = EvaporationTranspiration.Value;
+        const EvaporationTranspirationUnit = EvaporationTranspiration.Unit;
+        console.log(EvaporationTranspirationUnit);
+        console.log(EvaporationTranspirationValue);
+        const longPhrase = dayForecast.LongPhrase;
+        console.log(longPhrase);
+        const rain = dayForecast.Rain;
+        const rainValue = rain.Value;
+        const rainUnit = rain.Unit;
+        console.log(rainUnit, rainValue);
+
+        const snow = dayForecast.Snow;
+        const snowValue = snow.Value;
+        const snowUnit = snow.Unit;
+        console.log(snowValue, snowUnit);
+
+        const iconPhrase = dayForecast.IconPhrase;
+        console.log(iconPhrase);
+
+        const WindGust = dayForecast.WindGust;
+        console.log("WindGust = ", WindGust);
+        const WindGustDirection = `${WindGust.Direction.Degrees} ${WindGust.Direction.English}`;
+        const WindGustSpeed = `${WindGust.Speed.Value} ${WindGust.Speed.Unit}`;
+        console.log(WindGustDirection, WindGustSpeed);
+
+        const EvaporationTranspirationNight = nightForecast.Evapotranspiration;
+        const EvaporationTranspirationValueNight = EvaporationTranspirationNight.Value;
+        const EvaporationTranspirationUnitNight = EvaporationTranspirationNight.Unit;
+        console.log(EvaporationTranspirationUnitNight);
+        console.log(EvaporationTranspirationValueNight);
+        const longPhraseNight = nightForecast.LongPhrase;
+        console.log(longPhraseNight);
+        const rainNight = nightForecast.Rain;
+        const rainValueNight = rainNight.Value;
+        const rainUnitNight = rainNight.Unit;
+        console.log(rainUnitNight, rainValueNight);
+
+        const snowNight = nightForecast.Snow;
+        const snowValueNight = snowNight.Value;
+        const snowUnitNight = snowNight.Unit;
+        console.log(snowValueNight, snowUnitNight);
+
+        const iconPhraseNight = nightForecast.IconPhrase;
+        console.log(iconPhraseNight);
+
+        longPhraseDayText.textContent = `${longPhrase}`;
+        longPhraseNightText.textContent = `${longPhraseNight}`;
+
+        const WindGustNight = nightForecast.WindGust;
+        console.log("WindGust = ", WindGust);
+        const WindGustDirectionNight = `${WindGustNight.Direction.Degrees} ${WindGustNight.Direction.English}`;
+        const WindGustSpeedNight = `${WindGustNight.Speed.Value} ${WindGustNight.Speed.Unit}`;
+        console.log(WindGustDirectionNight, WindGustSpeedNight);
 
     } catch (error) {
         console.log(error);

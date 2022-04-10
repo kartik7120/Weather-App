@@ -5,7 +5,6 @@ const path = require("path")
 // import { Express as express } from "express";
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')))
-const icons = require("./public/icons/icon");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -13,7 +12,7 @@ app.set("views", path.join(__dirname, "views"));
 app.get("/", (req, res) => {
     try {
         // if (res)
-        res.render("index", { icons });
+        res.render("index");
         // else
         //     throw new Error("OH NO ERROR");
     } catch (error) {
