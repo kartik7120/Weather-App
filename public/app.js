@@ -9,6 +9,10 @@ const WeatherDescription = document.querySelector("#WeatherDescription");
 const card = document.querySelector("#card");
 const icon = document.querySelector("#Icon");
 const displayDate = document.querySelector("#Date");
+const geolocation = document.querySelector("#geolocation");
+const pressure = document.querySelector("#Pressure");
+const windDirectionAngle = document.querySelector("#windDirectionAngle");
+const windDirectionCompass = document.querySelector("#windDirectionCompass");
 
 btn.addEventListener("click", async () => {
     try {
@@ -78,25 +82,23 @@ btn.addEventListener("click", async () => {
         else {
             WeatherDescription.innerHTML += "<br>NightTime";
         }
-
-
+        // Geolocation
+        console.log(cityJSON[0].GeoPosition);
+        const latitude = cityJSON[0].GeoPosition.Latitude;
+        const longitude = cityJSON[0].GeoPosition.Longitude;
+        geolocation.textContent = `Latitude : ${latitude} Longitude : ${longitude}`;
+        windDirectionAngle.textContent = `Wind Angle :${cityWeather[0].Wind.Direction.English}`;
+        windDirectionCompass.textContent = `Wind Direction : ${cityWeather[0].Wind.Direction.Degrees}°`;
+        pressure.textContent = `Pressure : ${cityWeather[0].Pressure.Imperial.Value} ${cityWeather[0].Pressure.Imperial.Unit}`;
         // li2.textContent = `Temperature = ${ cityWeather[0].WeatherIcon }`;
         ul.appendChild(li1);
         ul.appendChild(li2);
-        // ul.appendChild(li3);
-        // ul.appendChild(li4);
         ul.appendChild(li5);
-        // ul.appendChild(li7);
         ul.appendChild(li8);
-        // ul.appendChild(li9);
-        // ul.appendChild(li10);
         ul.appendChild(li6);
-        console.log(card.offsetParent);
         if (!card.offsetParent) {
-            // card.removeAttribute("style");
             card.removeAttribute("class");
             card.setAttribute("class", "card visible");
-            // card.setAttribute("style", "width:18rem; display:block; transition-timing-function: linear; transition-duration: 2s;");
         }
 
         if (IsDayTime) {

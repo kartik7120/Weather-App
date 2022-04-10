@@ -16,3 +16,11 @@
   width: 1.5em;
   height: 1.5em;
 }
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#geolocation {
+  font-size: 1em;
+}
