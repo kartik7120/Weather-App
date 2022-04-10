@@ -90,7 +90,7 @@ btn.addEventListener("click", async () => {
         ul.appendChild(li8);
         // ul.appendChild(li9);
         // ul.appendChild(li10);
-        LinkDiv.appendChild(li6);
+        ul.appendChild(li6);
         console.log(card.offsetParent);
         if (!card.offsetParent) {
             // card.removeAttribute("style");
