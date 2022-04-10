@@ -1,6 +1,6 @@
 const btn = document.querySelector("#btn");
 const cityName = document.querySelector("#city");
-const apiKey = "QLbc1nElAQlOl4nxKAUcn34GgAi8pgay";
+const apiKey = "9LDZCGAhV1B7GMrny04G6FvuILTAD5DS";
 const ul = document.querySelector("#WeatherInformation");
 let cityObject; let cityKey;
 const LinkDiv = document.querySelector("#WeatherLinks");
@@ -114,11 +114,16 @@ btn.addEventListener("click", async (e) => {
         else
             icon.innerHTML = `<img src="/icons/night.gif" class="img-fluid" alt="A gif of a son">`;
 
-        // const response3 = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${apiKey}&details=${true}&metric=${true}`, { mode: "cors" });
+        const response3 = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${apiKey}&details=${true}&metric=${true}`, { mode: "cors" });
 
-        // const dailyReport = await response3.json();
+        const dailyReport = await response3.json();
 
-        // console.log("Daily report = ", dailyReport);
+        console.log("Daily report = ", dailyReport);
+        console.log(dailyReport.DailyForecasts[0].Day);
+        const dayForecast = dailyReport.DailyForecasts[0].Day;
+        const nightForecast = dailyReport.DailyForecasts[0].Night;
+        console.log(nightForecast);
+
     } catch (error) {
         console.log(error);
     }
