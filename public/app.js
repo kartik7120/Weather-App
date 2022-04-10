@@ -13,8 +13,10 @@ const geolocation = document.querySelector("#geolocation");
 const pressure = document.querySelector("#Pressure");
 const windDirectionAngle = document.querySelector("#windDirectionAngle");
 const windDirectionCompass = document.querySelector("#windDirectionCompass");
+const rightWidget = document.querySelector("#Right-Widgit");
 
-btn.addEventListener("click", async () => {
+btn.addEventListener("click", async (e) => {
+    e.stopPropagation();
     try {
         const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${cityName.value}&offset=1`)
         const cityJSON = await response.json();
@@ -100,15 +102,17 @@ btn.addEventListener("click", async () => {
             card.removeAttribute("class");
             card.setAttribute("class", "card visible");
         }
+        console.log(rightWidget.offsetParent);
+        if (!rightWidget.offsetParent) {
+            rightWidget.removeAttribute("class");
+            rightWidget.setAttribute("class", "card text-center");
+        }
 
         if (IsDayTime) {
-
             icon.innerHTML = '<img src="/icons/sun.gif" class="img-fluid" alt="A gif of a son">';
         }
         else
-            icon.innerHTML = `<img src="/icons/night.gif" class="img-fluid" alt="A gif of a son">`
-
-        // ul.appendChild(li2);
+            icon.innerHTML = `<img src="/icons/night.gif" class="img-fluid" alt="A gif of a son">`;
 
         // const response3 = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${apiKey}&details=${true}&metric=${true}`, { mode: "cors" });
 
