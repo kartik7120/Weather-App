@@ -16,6 +16,17 @@ const windDirectionCompass = document.querySelector("#windDirectionCompass");
 const rightWidget = document.querySelector("#Right-Widgit");
 const longPhraseDayText = document.querySelector("#LongPhraseDay");
 const longPhraseNightText = document.querySelector("#LongPhraseNight");
+const rain = document.querySelector("#rain");
+const snow = document.querySelector("#snow");
+const evaporation = document.querySelector("#evaporation");
+const windGust = document.querySelector("#windGust");
+const DayOneDayForecast = document.querySelector("#DayOneDayForecast");
+const NightOneDayForeCast = document.querySelector("#NightOneDayForecast");
+const rainNight = document.querySelector("#rainNight");
+const snowNight = document.querySelector("#snowNight");
+const evaporationNight = document.querySelector("#evaporationNight");
+const windGustNight = document.querySelector("#windGustNight");
+const DayOneDayForecastNight = document.querySelector("#DayOneDayForecastNight");
 
 btn.addEventListener("click", async (e) => {
     e.stopPropagation();
@@ -126,31 +137,30 @@ btn.addEventListener("click", async (e) => {
         const nightForecast = dailyReport.DailyForecasts[0].Night;
         console.log("Day Forecast =", dayForecast);
         console.log("Night Forecast =", nightForecast);
-        const EvaporationTranspiration = dayForecast.Evapotranspiration;
-        const EvaporationTranspirationValue = EvaporationTranspiration.Value;
-        const EvaporationTranspirationUnit = EvaporationTranspiration.Unit;
+        const EvaporationTranspirationValue = dayForecast.Evapotranspiration.Value;
+        const EvaporationTranspirationUnit = dayForecast.Evapotranspiration.Unit;
         console.log(EvaporationTranspirationUnit);
         console.log(EvaporationTranspirationValue);
         const longPhrase = dayForecast.LongPhrase;
         console.log(longPhrase);
-        const rain = dayForecast.Rain;
-        const rainValue = rain.Value;
-        const rainUnit = rain.Unit;
-        console.log(rainUnit, rainValue);
+        const rainValue = dayForecast.Rain.Value;
+        const rainUnit = dayForecast.Rain.Unit;
 
-        const snow = dayForecast.Snow;
-        const snowValue = snow.Value;
-        const snowUnit = snow.Unit;
+        if (!DayOneDayForecast.offsetParent) {
+            DayOneDayForecast.removeAttribute("class");
+            DayOneDayForecast.setAttribute("class", "card text-center mt-5");
+        }
+
+        // const snow = dayForecast.Snow;
+        const snowValue = dayForecast.Snow.Value;
+        const snowUnit = dayForecast.Snow.Unit;
         console.log(snowValue, snowUnit);
 
         const iconPhrase = dayForecast.IconPhrase;
         console.log(iconPhrase);
 
-        const WindGust = dayForecast.WindGust;
-        console.log("WindGust = ", WindGust);
-        const WindGustDirection = `${WindGust.Direction.Degrees} ${WindGust.Direction.English}`;
-        const WindGustSpeed = `${WindGust.Speed.Value} ${WindGust.Speed.Unit}`;
-        console.log(WindGustDirection, WindGustSpeed);
+        const WindGustDirection = `${dayForecast.WindGust.Direction.Degrees} ${dayForecast.WindGust.Direction.English}`;
+        const WindGustSpeed = `${dayForecast.WindGust.Speed.Value} ${dayForecast.WindGust.Speed.Unit}`;
 
         const EvaporationTranspirationNight = nightForecast.Evapotranspiration;
         const EvaporationTranspirationValueNight = EvaporationTranspirationNight.Value;
@@ -159,15 +169,12 @@ btn.addEventListener("click", async (e) => {
         console.log(EvaporationTranspirationValueNight);
         const longPhraseNight = nightForecast.LongPhrase;
         console.log(longPhraseNight);
-        const rainNight = nightForecast.Rain;
-        const rainValueNight = rainNight.Value;
-        const rainUnitNight = rainNight.Unit;
-        console.log(rainUnitNight, rainValueNight);
+        const rainValueNight = nightForecast.Rain.Value;
+        const rainUnitNight = nightForecast.Rain.Unit;
+        console.log("Rain night value ->", rainUnitNight, rainValueNight);
 
-        const snowNight = nightForecast.Snow;
-        const snowValueNight = snowNight.Value;
-        const snowUnitNight = snowNight.Unit;
-        console.log(snowValueNight, snowUnitNight);
+        const snowValueNight = nightForecast.Snow.Value;
+        const snowUnitNight = nightForecast.Snow.Unit;
 
         const iconPhraseNight = nightForecast.IconPhrase;
         console.log(iconPhraseNight);
@@ -176,10 +183,24 @@ btn.addEventListener("click", async (e) => {
         longPhraseNightText.textContent = `${longPhraseNight}`;
 
         const WindGustNight = nightForecast.WindGust;
-        console.log("WindGust = ", WindGust);
         const WindGustDirectionNight = `${WindGustNight.Direction.Degrees} ${WindGustNight.Direction.English}`;
         const WindGustSpeedNight = `${WindGustNight.Speed.Value} ${WindGustNight.Speed.Unit}`;
         console.log(WindGustDirectionNight, WindGustSpeedNight);
+
+        rain.innerHTML = `Rain :${rainValue} ${rainUnit}`;
+        snow.innerHTML = `Snow :${snowValue} ${snowUnit}`;
+        evaporation.innerHTML = `EVP: ${EvaporationTranspirationValue} ${EvaporationTranspirationUnit}`;
+        windGust.innerHTML = `Wind : ${WindGustSpeed} ${WindGustDirection}`;
+
+        rainNight.innerHTML = `Rain :${rainValueNight} ${rainUnitNight}`;
+        snowNight.innerHTML = `Snow :${snowValueNight} ${snowUnitNight}`;
+        evaporationNight.innerHTML = `EVP: ${EvaporationTranspirationValueNight} ${EvaporationTranspirationUnitNight}`;
+        windGustNight.innerHTML = `Wind : ${WindGustSpeedNight} ${WindGustDirectionNight}`;
+
+        if (!NightOneDayForeCast.offsetParent) {
+            NightOneDayForeCast.removeAttribute("class");
+            NightOneDayForeCast.setAttribute("class", "card text-center mt-5");
+        }
 
     } catch (error) {
         console.log(error);
