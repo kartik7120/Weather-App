@@ -66,14 +66,10 @@ btn.addEventListener("click", async (e) => {
         li1.textContent = `Temperature : ${cityWeather[0].ApparentTemperature.Imperial.Value} `;
         li1.innerHTML += `<img src="/icons/fahrenheit.gif" class="img-fluid" id="unit" alt="A gif of a son"> / ${cityWeather[0].ApparentTemperature.Metric.Value} <img src="/icons/celsius.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
 
-        // li3.textContent = `Weather Text = ${cityWeather[0].WeatherText}`;
-        // li4.textContent = `Wind Speed= ${cityWeather[0].Wind.Speed.Imperial.Value} ${cityWeather[0].Wind.Speed.Imperial.Unit}`;
         li5.textContent = `Relative Humidity : ${cityWeather[0].RelativeHumidity}`;
         li5.innerHTML += ` <img src="/icons/drop.gif" class="img-fluid" id="unit" alt="A gif of a son">`
-        // li7.textContent = `Pressure = ${cityWeather[0].Pressure.Imperial.Value} ${cityWeather[0].Pressure.Imperial.Unit}`;
         li8.textContent = `CloudCover : ${cityWeather[0].CloudCover}`;
         li8.innerHTML += ` <img src="/icons/clouds.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
-        // li9.textContent = `Wind Direction = ${cityWeather[0].Wind.Direction.Degrees}° ${cityWeather[0].Wind.Direction.English}`;
         const DesktopLink = cityWeather[0].Link;
         const MoblieLink = cityWeather[0].MoblieLink;
         li6.innerHTML = `<a href="${DesktopLink}">Desktop Link</a>`; //cityWeather[0].Link
@@ -111,6 +107,7 @@ btn.addEventListener("click", async (e) => {
         ul.appendChild(li5);
         ul.appendChild(li8);
         ul.appendChild(li6);
+
         if (!card.offsetParent) {
             card.removeAttribute("class");
             card.setAttribute("class", "card visible");
@@ -139,8 +136,6 @@ btn.addEventListener("click", async (e) => {
         console.log("Night Forecast =", nightForecast);
         const EvaporationTranspirationValue = dayForecast.Evapotranspiration.Value;
         const EvaporationTranspirationUnit = dayForecast.Evapotranspiration.Unit;
-        console.log(EvaporationTranspirationUnit);
-        console.log(EvaporationTranspirationValue);
         const longPhrase = dayForecast.LongPhrase;
         console.log(longPhrase);
         const rainValue = dayForecast.Rain.Value;
@@ -151,10 +146,8 @@ btn.addEventListener("click", async (e) => {
             DayOneDayForecast.setAttribute("class", "card text-center mt-5");
         }
 
-        // const snow = dayForecast.Snow;
         const snowValue = dayForecast.Snow.Value;
         const snowUnit = dayForecast.Snow.Unit;
-        console.log(snowValue, snowUnit);
 
         const iconPhrase = dayForecast.IconPhrase;
         console.log(iconPhrase);
@@ -171,7 +164,6 @@ btn.addEventListener("click", async (e) => {
         console.log(longPhraseNight);
         const rainValueNight = nightForecast.Rain.Value;
         const rainUnitNight = nightForecast.Rain.Unit;
-        console.log("Rain night value ->", rainUnitNight, rainValueNight);
 
         const snowValueNight = nightForecast.Snow.Value;
         const snowUnitNight = nightForecast.Snow.Unit;
@@ -185,7 +177,6 @@ btn.addEventListener("click", async (e) => {
         const WindGustNight = nightForecast.WindGust;
         const WindGustDirectionNight = `${WindGustNight.Direction.Degrees} ${WindGustNight.Direction.English}`;
         const WindGustSpeedNight = `${WindGustNight.Speed.Value} ${WindGustNight.Speed.Unit}`;
-        console.log(WindGustDirectionNight, WindGustSpeedNight);
 
         rain.innerHTML = `Rain :${rainValue} ${rainUnit}`;
         snow.innerHTML = `Snow :${snowValue} ${snowUnit}`;
