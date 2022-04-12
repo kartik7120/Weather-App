@@ -1,6 +1,6 @@
 const btn = document.querySelector("#btn");
 const cityName = document.querySelector("#city");
-const apiKey = "9LDZCGAhV1B7GMrny04G6FvuILTAD5DS";
+const apiKey = "oVcWaAx5KMpN1vwT7m5KYdEZZkpSC84R";
 const ul = document.querySelector("#WeatherInformation");
 let cityObject; let cityKey;
 const LinkDiv = document.querySelector("#WeatherLinks");
@@ -27,6 +27,13 @@ const snowNight = document.querySelector("#snowNight");
 const evaporationNight = document.querySelector("#evaporationNight");
 const windGustNight = document.querySelector("#windGustNight");
 const DayOneDayForecastNight = document.querySelector("#DayOneDayForecastNight");
+
+window.onload = () => {
+    if (localStorage.getItem("cityName")) {
+        cityName.value = localStorage.getItem("cityName");
+        btn.click();
+    }
+}
 
 btn.addEventListener("click", async (e) => {
     e.stopPropagation();
@@ -58,11 +65,11 @@ btn.addEventListener("click", async (e) => {
         const li10 = document.createElement("li");
         // LocalObservationDateTime
         weatherIconNumber = cityWeather[0].WeatherIcon;
-        console.log(cityWeather[0].EpochTime);
+        // console.log(cityWeather[0].EpochTime);
         const date = new Date(cityWeather[0].EpochTime * 1000);
-        console.log(weatherIconNumber);
+        // console.log(weatherIconNumber);
         displayDate.textContent = `${date}`;
-        console.log(cityWeather[0].ApparentTemperature.Imperial.Value, cityWeather[0].ApparentTemperature.Imperial.Unit);
+        // console.log(cityWeather[0].ApparentTemperature.Imperial.Value, cityWeather[0].ApparentTemperature.Imperial.Unit);
         li1.textContent = `Temperature : ${cityWeather[0].ApparentTemperature.Imperial.Value} `;
         li1.innerHTML += `<img src="/icons/fahrenheit.gif" class="img-fluid" id="unit" alt="A gif of a son"> / ${cityWeather[0].ApparentTemperature.Metric.Value} <img src="/icons/celsius.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
 
@@ -94,7 +101,7 @@ btn.addEventListener("click", async (e) => {
             WeatherDescription.innerHTML += "<br>NightTime";
         }
         // Geolocation
-        console.log(cityJSON[0].GeoPosition);
+        // console.log(cityJSON[0].GeoPosition);
         const latitude = cityJSON[0].GeoPosition.Latitude;
         const longitude = cityJSON[0].GeoPosition.Longitude;
         geolocation.textContent = `Latitude : ${latitude} Longitude : ${longitude}`;
@@ -129,15 +136,15 @@ btn.addEventListener("click", async (e) => {
         const dailyReport = await response3.json();
 
         // console.log("Daily report = ", dailyReport);
-        console.log(dailyReport.DailyForecasts[0].Day);
+        // console.log(dailyReport.DailyForecasts[0].Day);
         const dayForecast = dailyReport.DailyForecasts[0].Day;
         const nightForecast = dailyReport.DailyForecasts[0].Night;
-        console.log("Day Forecast =", dayForecast);
-        console.log("Night Forecast =", nightForecast);
+        // console.log("Day Forecast =", dayForecast);
+        // console.log("Night Forecast =", nightForecast);
         const EvaporationTranspirationValue = dayForecast.Evapotranspiration.Value;
         const EvaporationTranspirationUnit = dayForecast.Evapotranspiration.Unit;
         const longPhrase = dayForecast.LongPhrase;
-        console.log(longPhrase);
+        // console.log(longPhrase);
         const rainValue = dayForecast.Rain.Value;
         const rainUnit = dayForecast.Rain.Unit;
 
@@ -150,7 +157,7 @@ btn.addEventListener("click", async (e) => {
         const snowUnit = dayForecast.Snow.Unit;
 
         const iconPhrase = dayForecast.IconPhrase;
-        console.log(iconPhrase);
+        // console.log(iconPhrase);
 
         const WindGustDirection = `${dayForecast.WindGust.Direction.Degrees} ${dayForecast.WindGust.Direction.English}`;
         const WindGustSpeed = `${dayForecast.WindGust.Speed.Value} ${dayForecast.WindGust.Speed.Unit}`;
@@ -158,10 +165,10 @@ btn.addEventListener("click", async (e) => {
         const EvaporationTranspirationNight = nightForecast.Evapotranspiration;
         const EvaporationTranspirationValueNight = EvaporationTranspirationNight.Value;
         const EvaporationTranspirationUnitNight = EvaporationTranspirationNight.Unit;
-        console.log(EvaporationTranspirationUnitNight);
-        console.log(EvaporationTranspirationValueNight);
+        // console.log(EvaporationTranspirationUnitNight);
+        // console.log(EvaporationTranspirationValueNight);
         const longPhraseNight = nightForecast.LongPhrase;
-        console.log(longPhraseNight);
+        // console.log(longPhraseNight);
         const rainValueNight = nightForecast.Rain.Value;
         const rainUnitNight = nightForecast.Rain.Unit;
 
@@ -169,7 +176,7 @@ btn.addEventListener("click", async (e) => {
         const snowUnitNight = nightForecast.Snow.Unit;
 
         const iconPhraseNight = nightForecast.IconPhrase;
-        console.log(iconPhraseNight);
+        // console.log(iconPhraseNight);
 
         longPhraseDayText.textContent = `${longPhrase}`;
         longPhraseNightText.textContent = `${longPhraseNight}`;
@@ -191,6 +198,13 @@ btn.addEventListener("click", async (e) => {
         if (!NightOneDayForeCast.offsetParent) {
             NightOneDayForeCast.removeAttribute("class");
             NightOneDayForeCast.setAttribute("class", "card text-center mt-5");
+        }
+
+        localStorage.setItem("name", "kaartik");
+        console.log(localStorage.getItem("name"));
+        if (cityName.value) {
+            localStorage.setItem("cityName", `${cityName.value}`);
+            console.log(localStorage.getItem("cityName"));
         }
 
     } catch (error) {
