@@ -128,7 +128,7 @@ btn.addEventListener("click", async (e) => {
         }
         if (!rightWidget.offsetParent) {
             rightWidget.removeAttribute("class");
-            rightWidget.setAttribute("class", "card text-center weather mt-5");
+            rightWidget.setAttribute("class", "card text-center weather ");
         }
 
         if (IsDayTime) {
