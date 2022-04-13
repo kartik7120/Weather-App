@@ -16,6 +16,7 @@ img {
   background-color: white;
   box-shadow: 10px 10px 3px 5px rgba(0, 0, 0, 0.574);
 }
+
 .visible {
   display: block;
   transition-property: display;
@@ -67,7 +68,9 @@ h1 {
 
 @media screen and (min-width: 800px) {
   #DayOneDayForecast,
-  #NightOneDayForecast,
+  #NightOneDayForecast {
+    width: 38em;
+  }
   #card,
   #Right-Widgit {
     width: 38em;
@@ -77,13 +80,13 @@ h1 {
     max-width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   #top-widget {
     max-width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }

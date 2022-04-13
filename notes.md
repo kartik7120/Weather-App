@@ -31,3 +31,10 @@
    - Ice
    - Icon
    - Icon Phrase
+
+### Things to be fixed
+
+- Left widget Unordered List
+- Widgets to be put in the middle
+- Icons to be changed
+- Top right widgets to be fixed
