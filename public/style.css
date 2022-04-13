@@ -2,6 +2,13 @@
   display: none;
 }
 
+img {
+  background-color: white;
+}
+
+.weather {
+  background-color: white;
+}
 .visible {
   display: block;
   transition-property: display;
@@ -21,6 +28,27 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+label {
+  color: white;
+}
+
 #geolocation {
   font-size: 1em;
+}
+
+body {
+  background-color: #052d61;
+}
+
+h1 {
+  /* background-color: black; */
+  color: white;
+}
+
+#city {
+  width: 20em;
+  margin: 0 auto;
+  background-color: #052d61;
+  color: hsl(0, 0%, 100%);
 }

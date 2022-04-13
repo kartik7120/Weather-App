@@ -37,6 +37,14 @@ window.onload = () => {
 
 btn.addEventListener("click", async (e) => {
     e.stopPropagation();
+
+    if (ul.children.length > 0) {
+        const l = ul.children;
+        for (let ele of l) {
+            ele.remove();
+        }
+    }
+
     try {
         const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${cityName.value}&offset=1`)
         const cityJSON = await response.json();
@@ -105,8 +113,8 @@ btn.addEventListener("click", async (e) => {
         const latitude = cityJSON[0].GeoPosition.Latitude;
         const longitude = cityJSON[0].GeoPosition.Longitude;
         geolocation.textContent = `Latitude : ${latitude} Longitude : ${longitude}`;
-        windDirectionAngle.textContent = `Wind Angle :${cityWeather[0].Wind.Direction.English}`;
-        windDirectionCompass.textContent = `Wind Direction : ${cityWeather[0].Wind.Direction.Degrees}°`;
+        windDirectionAngle.textContent = `Wind Direction :${cityWeather[0].Wind.Direction.English}`;
+        windDirectionCompass.textContent = `Wind Angle : ${cityWeather[0].Wind.Direction.Degrees}°`;
         pressure.textContent = `Pressure : ${cityWeather[0].Pressure.Imperial.Value} ${cityWeather[0].Pressure.Imperial.Unit}`;
         // li2.textContent = `Temperature = ${ cityWeather[0].WeatherIcon }`;
         ul.appendChild(li1);
@@ -117,12 +125,12 @@ btn.addEventListener("click", async (e) => {
 
         if (!card.offsetParent) {
             card.removeAttribute("class");
-            card.setAttribute("class", "card visible");
+            card.setAttribute("class", "card visible weather");
         }
         console.log(rightWidget.offsetParent);
         if (!rightWidget.offsetParent) {
             rightWidget.removeAttribute("class");
-            rightWidget.setAttribute("class", "card text-center");
+            rightWidget.setAttribute("class", "card text-center weather");
         }
 
         if (IsDayTime) {
@@ -150,7 +158,7 @@ btn.addEventListener("click", async (e) => {
 
         if (!DayOneDayForecast.offsetParent) {
             DayOneDayForecast.removeAttribute("class");
-            DayOneDayForecast.setAttribute("class", "card text-center mt-5");
+            DayOneDayForecast.setAttribute("class", "card text-center weather mt-5");
         }
 
         const snowValue = dayForecast.Snow.Value;
@@ -197,7 +205,7 @@ btn.addEventListener("click", async (e) => {
 
         if (!NightOneDayForeCast.offsetParent) {
             NightOneDayForeCast.removeAttribute("class");
-            NightOneDayForeCast.setAttribute("class", "card text-center mt-5");
+            NightOneDayForeCast.setAttribute("class", "card text-center weather mt-5");
         }
 
         localStorage.setItem("name", "kaartik");
