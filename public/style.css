@@ -4,7 +4,13 @@
 
 img {
   background-color: white;
+  /* margin-left: 12em; */
 }
+
+/* #Icon {
+  width: 15em;
+  height: 15em;
+} */
 
 .weather {
   background-color: white;
@@ -60,16 +66,22 @@ h1 {
 } */
 
 @media screen and (min-width: 800px) {
-  #DayOneDayForecast {
-    width: 38em;
-  }
-
-  #NightOneDayForecast {
+  #DayOneDayForecast,
+  #NightOneDayForecast,
+  #card,
+  #Right-Widgit {
     width: 38em;
   }
 
   #bottom-widget {
-    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #top-widget {
+    max-width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

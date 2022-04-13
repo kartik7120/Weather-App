@@ -8,7 +8,7 @@ const cityHead = document.querySelector("#LocalizedName");
 const WeatherDescription = document.querySelector("#WeatherDescription");
 const card = document.querySelector("#card");
 const icon = document.querySelector("#Icon");
-const displayDate = document.querySelector("#Date");
+// const displayDate = document.querySelector("#Date");
 const geolocation = document.querySelector("#geolocation");
 const pressure = document.querySelector("#Pressure");
 const windDirectionAngle = document.querySelector("#windDirectionAngle");
@@ -74,9 +74,9 @@ btn.addEventListener("click", async (e) => {
         // LocalObservationDateTime
         weatherIconNumber = cityWeather[0].WeatherIcon;
         // console.log(cityWeather[0].EpochTime);
-        const date = new Date(cityWeather[0].EpochTime * 1000);
+        // const date = new Date(cityWeather[0].EpochTime * 1000);
         // console.log(weatherIconNumber);
-        displayDate.textContent = `${date}`;
+        // displayDate.textContent = `${date}`;
         // console.log(cityWeather[0].ApparentTemperature.Imperial.Value, cityWeather[0].ApparentTemperature.Imperial.Unit);
         li1.textContent = `Temperature : ${cityWeather[0].ApparentTemperature.Imperial.Value} `;
         li1.innerHTML += `<img src="/icons/fahrenheit.gif" class="img-fluid" id="unit" alt="A gif of a son"> / ${cityWeather[0].ApparentTemperature.Metric.Value} <img src="/icons/celsius.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
@@ -122,15 +122,13 @@ btn.addEventListener("click", async (e) => {
         ul.appendChild(li5);
         ul.appendChild(li8);
         ul.appendChild(li6);
-
         if (!card.offsetParent) {
             card.removeAttribute("class");
             card.setAttribute("class", "card visible weather");
         }
-        console.log(rightWidget.offsetParent);
         if (!rightWidget.offsetParent) {
             rightWidget.removeAttribute("class");
-            rightWidget.setAttribute("class", "card text-center weather");
+            rightWidget.setAttribute("class", "card text-center weather mt-5");
         }
 
         if (IsDayTime) {
@@ -208,8 +206,8 @@ btn.addEventListener("click", async (e) => {
             NightOneDayForeCast.setAttribute("class", "card text-center weather mt-5 bottom-widget");
         }
 
-        localStorage.setItem("name", "kaartik");
-        console.log(localStorage.getItem("name"));
+        // localStorage.setItem("name", "kaartik");
+        // console.log(localStorage.getItem("name"));
         if (cityName.value) {
             localStorage.setItem("cityName", `${cityName.value}`);
             console.log(localStorage.getItem("cityName"));
