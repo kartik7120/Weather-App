@@ -134,10 +134,10 @@ btn.addEventListener("click", async (e) => {
         }
 
         if (IsDayTime) {
-            icon.innerHTML = '<img src="/icons/sun.gif" class="img-fluid" alt="A gif of a son">';
+            icon.innerHTML = '<img src="/Nicons/sun.png" class="img-fluid" alt="A image of a sun">';
         }
         else
-            icon.innerHTML = `<img src="/icons/night.gif" class="img-fluid" alt="A gif of a son">`;
+            icon.innerHTML = `<img src="/Nicons/night-mode.png" class="img-fluid" alt="A image of a moon">`;
 
         const response3 = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=${apiKey}&details=${true}&metric=${true}`, { mode: "cors" });
 
@@ -158,7 +158,7 @@ btn.addEventListener("click", async (e) => {
 
         if (!DayOneDayForecast.offsetParent) {
             DayOneDayForecast.removeAttribute("class");
-            DayOneDayForecast.setAttribute("class", "card text-center weather mt-5");
+            DayOneDayForecast.setAttribute("class", "card text-center weather mt-5 bottom-widget");
         }
 
         const snowValue = dayForecast.Snow.Value;
@@ -205,7 +205,7 @@ btn.addEventListener("click", async (e) => {
 
         if (!NightOneDayForeCast.offsetParent) {
             NightOneDayForeCast.removeAttribute("class");
-            NightOneDayForeCast.setAttribute("class", "card text-center weather mt-5");
+            NightOneDayForeCast.setAttribute("class", "card text-center weather mt-5 bottom-widget");
         }
 
         localStorage.setItem("name", "kaartik");
