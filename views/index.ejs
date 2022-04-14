@@ -1,0 +1,132 @@
+<%- include("./partials/head") %>
+
+    <div class="container">
+        <h1 class="text-center">Weather App</h1>
+
+        <!-- <form action="/" class="validated-form" novalidate id="form"> -->
+        <div class="mb-3 text-center">
+            <label for="city" class="form-label">Enter your city</label>
+            <input type="text" name="city" class="form-control" id="city" placeholder="Enter your city"
+                aria-describedby="CityName" required>
+            <button type="button" class="btn btn-danger mt-3" id="btn">Submit</button>
+        </div>
+        <!-- </form> -->
+        <div class="mt-3 container" id="top-widget">
+            <!-- <div class="col-6"> -->
+            <div class="card mb-3 hidden weather" id="card">
+                <div class="row ">
+                    <div class="col-md-4" id="Icon"></div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title display-5" id="LocalizedName"></h5>
+                            <p class=" card-text lead" id="WeatherDescription"></p>
+                        </div>
+                        <p class="card-text lead" id="Date"><small class="text-muted"></small></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush lead" id="WeatherInformation"></ul>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+            <!-- <div class="col-6"> -->
+            <!-- Right Widget -->
+            <div class="card text-center hidden" id="Right-Widgit">
+                <div class="card-header">
+                    Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Weather Conditions</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <div class="flex-container">
+                        <div>
+                            <img src="/Nicons/geolocalization.png" class="img-fluid" alt="Icon of geolocation">
+                            <p id="geolocation" class="lead"></p>
+                        </div>
+                        <div>
+                            <img src="/Nicons/weather-vane.png" class="img-fluid" alt="Icon of wind direction">
+                            <p id="windDirectionAngle" class="lead"></p>
+                        </div>
+                        <div>
+                            <img src="/Nicons/wind.png" class="img-fluid" alt="Icon of wind direction">
+                            <p id="windDirectionCompass" class="lead"></p>
+                        </div>
+                        <div>
+                            <img src="/icons/gauge.png" class="img-fluid" alt="Icon of pressure">
+                            <p id="Pressure" class="lead"></p>
+                        </div>
+                    </div>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <div class="card-footer text-muted">
+                    Powered by <a href="https://developer.accuweather.com/" target="_blank">AccuWeather</a>
+                </div>
+            </div>
+            <!-- </div>/ -->
+        </div>
+        <div class="mt-3 container" id="bottom-widget">
+            <div class="card text-center mt-5 hidden" id="DayOneDayForecast">
+                <div class="card-header">
+                    Day
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" id="LongPhraseDay"></h5>
+                    <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                    <div class="flex-container">
+                        <div>
+                            <img src="/Nicons/rain.png" class="img-fluid mb-3" alt="Icon of rain">
+                            <p id="rain" class="lead"></p>
+                        </div>
+                        <div>
+                            <img src="/Nicons/snow.png" class="img-fluid mb-3" alt="Icon of snow">
+                            <p id="snow" class="lead"></p>
+                        </div>
+                        <div>
+                            <img src="/icons/droplet.png" class="img-fluid mb-3" alt="Icon of Evaporation">
+                            <p id="evaporation" class="lead"></p>
+                        </div>
+                        <div>
+                            <img src="/Nicons/wind-direction.png" class="img-fluid mb-3" alt="Icon of pressure">
+                            <p id="windGust" class="lead"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    1 days ago
+                </div>
+            </div>
+            <div class="card text-center mt-5 hidden" class="bottom-widget" id="NightOneDayForecast">
+                <div class="card-header">
+                    Night
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" id="LongPhraseNight"></h5>
+                </div>
+                <div class="flex-container">
+                    <div>
+                        <img src="/Nicons/rain.png" class="img-fluid mb-3" alt="Icon of rain">
+                        <p id="rainNight" class="lead"></p>
+                    </div>
+                    <div>
+                        <img src="/Nicons/snow.png" class="img-fluid mb-3" alt="Icon of snow">
+                        <p id="snowNight" class="lead"></p>
+                    </div>
+                    <div>
+                        <img src="/icons/droplet.png" class="img-fluid mb-3" alt="Icon of Evaporation">
+                        <p id="evaporationNight" class="lead"></p>
+                    </div>
+                    <div>
+                        <img src="/Nicons/wind-direction.png" class="img-fluid mb-3" alt="Icon of pressure">
+                        <p id="windGustNight" class="lead"></p>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    1 days ago
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app.js"></script>
+    <%- include("./partials/footer") %>
