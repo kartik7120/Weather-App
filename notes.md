@@ -37,4 +37,4 @@
 - [x] Left widget Unordered List
 - [ ] Widgets to be put in the middle
 - [ ] Icons to be changed
-- [ ] Top right widgets to be fixed
+- [x] Top right widgets to be fixed

@@ -121,11 +121,11 @@ btn.addEventListener("click", async (e) => {
         ul.appendChild(li6);
         if (!card.offsetParent) {
             card.removeAttribute("class");
-            card.setAttribute("class", "card visible weather");
+            card.setAttribute("class", "card visible mt-5 weather");
         }
         if (!rightWidget.offsetParent) {
             rightWidget.removeAttribute("class");
-            rightWidget.setAttribute("class", "card text-center weather ");
+            rightWidget.setAttribute("class", "card text-center mt-5 weather ");
         }
 
         if (IsDayTime) {
