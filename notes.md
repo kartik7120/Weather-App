@@ -38,3 +38,4 @@
 - [ ] Widgets to be put in the middle
 - [ ] Icons to be changed
 - [x] Top right widgets to be fixed
+- [x] Fix extra li add in ul in top left widget

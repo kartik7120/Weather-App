@@ -1,6 +1,6 @@
 const btn = document.querySelector("#btn");
 const cityName = document.querySelector("#city");
-const apiKey = "oVcWaAx5KMpN1vwT7m5KYdEZZkpSC84R";
+const apiKey = "kA2HNDyEcYGUMk9ISpB4BWV95Hc4A3SE";
 const ul = document.querySelector("#WeatherInformation");
 let cityObject; let cityKey;
 const LinkDiv = document.querySelector("#WeatherLinks");
@@ -37,12 +37,8 @@ window.onload = () => {
 
 btn.addEventListener("click", async (e) => {
     e.stopPropagation();
-
-    if (ul.children.length > 0) {
-        const l = ul.children;
-        for (let ele of l) {
-            ele.remove();
-        }
+    while (ul.hasChildNodes()) {
+        ul.removeChild(ul.lastChild);
     }
 
     try {
@@ -70,13 +66,8 @@ btn.addEventListener("click", async (e) => {
         const li8 = document.createElement("li");
         const li9 = document.createElement("li");
         const li10 = document.createElement("li");
-        // LocalObservationDateTime
+
         weatherIconNumber = cityWeather[0].WeatherIcon;
-        // console.log(cityWeather[0].EpochTime);
-        // const date = new Date(cityWeather[0].EpochTime * 1000);
-        // console.log(weatherIconNumber);
-        // displayDate.textContent = `${date}`;
-        // console.log(cityWeather[0].ApparentTemperature.Imperial.Value, cityWeather[0].ApparentTemperature.Imperial.Unit);
         li1.textContent = `Temperature : ${cityWeather[0].ApparentTemperature.Imperial.Value} `;
         li1.innerHTML += `<img src="/icons/fahrenheit.gif" class="img-fluid" id="unit" alt="A gif of a son"> / ${cityWeather[0].ApparentTemperature.Metric.Value} <img src="/icons/celsius.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
 
@@ -86,7 +77,7 @@ btn.addEventListener("click", async (e) => {
         li8.innerHTML += ` <img src="/icons/clouds.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
         const DesktopLink = cityWeather[0].Link;
         const MoblieLink = cityWeather[0].MoblieLink;
-        li6.innerHTML = `<a href="${DesktopLink}">Desktop Link</a>`; //cityWeather[0].Link
+        li6.innerHTML = `<a href="${DesktopLink}">Desktop Link</a>`;
         li1.setAttribute("class", "list-group-item");
         li3.setAttribute("class", "list-group-item");
         li4.setAttribute("class", "list-group-item");
@@ -106,15 +97,12 @@ btn.addEventListener("click", async (e) => {
         else {
             WeatherDescription.innerHTML += "<br>NightTime";
         }
-        // Geolocation
-        // console.log(cityJSON[0].GeoPosition);
         const latitude = cityJSON[0].GeoPosition.Latitude;
         const longitude = cityJSON[0].GeoPosition.Longitude;
         geolocation.textContent = `Latitude : ${latitude} Longitude : ${longitude}`;
         windDirectionAngle.textContent = `Wind Direction :${cityWeather[0].Wind.Direction.English}`;
         windDirectionCompass.textContent = `Wind Angle : ${cityWeather[0].Wind.Direction.Degrees}°`;
         pressure.textContent = `Pressure : ${cityWeather[0].Pressure.Imperial.Value} ${cityWeather[0].Pressure.Imperial.Unit}`;
-        // li2.textContent = `Temperature = ${ cityWeather[0].WeatherIcon }`;
         ul.appendChild(li1);
         ul.appendChild(li5);
         ul.appendChild(li8);
@@ -138,16 +126,11 @@ btn.addEventListener("click", async (e) => {
 
         const dailyReport = await response3.json();
 
-        // console.log("Daily report = ", dailyReport);
-        // console.log(dailyReport.DailyForecasts[0].Day);
         const dayForecast = dailyReport.DailyForecasts[0].Day;
         const nightForecast = dailyReport.DailyForecasts[0].Night;
-        // console.log("Day Forecast =", dayForecast);
-        // console.log("Night Forecast =", nightForecast);
         const EvaporationTranspirationValue = dayForecast.Evapotranspiration.Value;
         const EvaporationTranspirationUnit = dayForecast.Evapotranspiration.Unit;
         const longPhrase = dayForecast.LongPhrase;
-        // console.log(longPhrase);
         const rainValue = dayForecast.Rain.Value;
         const rainUnit = dayForecast.Rain.Unit;
 
@@ -160,7 +143,6 @@ btn.addEventListener("click", async (e) => {
         const snowUnit = dayForecast.Snow.Unit;
 
         const iconPhrase = dayForecast.IconPhrase;
-        // console.log(iconPhrase);
 
         const WindGustDirection = `${dayForecast.WindGust.Direction.Degrees} ${dayForecast.WindGust.Direction.English}`;
         const WindGustSpeed = `${dayForecast.WindGust.Speed.Value} ${dayForecast.WindGust.Speed.Unit}`;
@@ -168,10 +150,7 @@ btn.addEventListener("click", async (e) => {
         const EvaporationTranspirationNight = nightForecast.Evapotranspiration;
         const EvaporationTranspirationValueNight = EvaporationTranspirationNight.Value;
         const EvaporationTranspirationUnitNight = EvaporationTranspirationNight.Unit;
-        // console.log(EvaporationTranspirationUnitNight);
-        // console.log(EvaporationTranspirationValueNight);
         const longPhraseNight = nightForecast.LongPhrase;
-        // console.log(longPhraseNight);
         const rainValueNight = nightForecast.Rain.Value;
         const rainUnitNight = nightForecast.Rain.Unit;
 
@@ -179,7 +158,6 @@ btn.addEventListener("click", async (e) => {
         const snowUnitNight = nightForecast.Snow.Unit;
 
         const iconPhraseNight = nightForecast.IconPhrase;
-        // console.log(iconPhraseNight);
 
         longPhraseDayText.textContent = `${longPhrase}`;
         longPhraseNightText.textContent = `${longPhraseNight}`;
@@ -203,8 +181,6 @@ btn.addEventListener("click", async (e) => {
             NightOneDayForeCast.setAttribute("class", "card text-center weather mt-5 bottom-widget");
         }
 
-        // localStorage.setItem("name", "kaartik");
-        // console.log(localStorage.getItem("name"));
         if (cityName.value) {
             localStorage.setItem("cityName", `${cityName.value}`);
             console.log(localStorage.getItem("cityName"));
