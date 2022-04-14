@@ -62,7 +62,6 @@ btn.addEventListener("click", async (e) => {
         console.log("IsDayTime", cityWeather[0].IsDayTime);
         const IsDayTime = cityWeather[0].IsDayTime;
         const li1 = document.createElement("li");
-        const li2 = document.createElement("li");
         const li3 = document.createElement("li");
         const li4 = document.createElement("li");
         const li5 = document.createElement("li");
@@ -89,7 +88,6 @@ btn.addEventListener("click", async (e) => {
         const MoblieLink = cityWeather[0].MoblieLink;
         li6.innerHTML = `<a href="${DesktopLink}">Desktop Link</a>`; //cityWeather[0].Link
         li1.setAttribute("class", "list-group-item");
-        li2.setAttribute("class", "list-group-item");
         li3.setAttribute("class", "list-group-item");
         li4.setAttribute("class", "list-group-item");
         li5.setAttribute("class", "list-group-item");
@@ -118,7 +116,6 @@ btn.addEventListener("click", async (e) => {
         pressure.textContent = `Pressure : ${cityWeather[0].Pressure.Imperial.Value} ${cityWeather[0].Pressure.Imperial.Unit}`;
         // li2.textContent = `Temperature = ${ cityWeather[0].WeatherIcon }`;
         ul.appendChild(li1);
-        ul.appendChild(li2);
         ul.appendChild(li5);
         ul.appendChild(li8);
         ul.appendChild(li6);
