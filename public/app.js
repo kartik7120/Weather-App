@@ -69,12 +69,12 @@ btn.addEventListener("click", async (e) => {
 
         weatherIconNumber = cityWeather[0].WeatherIcon;
         li1.textContent = `Temperature : ${cityWeather[0].ApparentTemperature.Imperial.Value} `;
-        li1.innerHTML += `<img src="/icons/fahrenheit.gif" class="img-fluid" id="unit" alt="A gif of a son"> / ${cityWeather[0].ApparentTemperature.Metric.Value} <img src="/icons/celsius.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
+        li1.innerHTML += `<img src="/Nicons/farenheit.png" class="img-fluid" id="unit" alt="Farenheit"> / ${cityWeather[0].ApparentTemperature.Metric.Value} <img src="/Nicons/celsius (1).png" class="img-fluid" id="unit" alt="celcius">`;
 
         li5.textContent = `Relative Humidity : ${cityWeather[0].RelativeHumidity}`;
-        li5.innerHTML += ` <img src="/icons/drop.gif" class="img-fluid" id="unit" alt="A gif of a son">`
+        li5.innerHTML += ` <img src="/Nicons/drop.png" class="img-fluid" id="unit" alt="">`
         li8.textContent = `CloudCover : ${cityWeather[0].CloudCover}`;
-        li8.innerHTML += ` <img src="/icons/clouds.gif" class="img-fluid" id="unit" alt="A gif of a son">`;
+        li8.innerHTML += ` <img src="/Nicons/cloud-computing.png" class="img-fluid" id="unit" alt="A gif of a son">`;
         const DesktopLink = cityWeather[0].Link;
         const MoblieLink = cityWeather[0].MoblieLink;
         li6.innerHTML = `<a href="${DesktopLink}">Desktop Link</a>`;
