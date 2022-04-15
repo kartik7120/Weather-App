@@ -181,14 +181,14 @@ btn.addEventListener("click", async (e) => {
             console.log(localStorage.getItem("cityName"));
         }
 
+        error.setAttribute("aria-hidden", "true");
+        error.setAttribute("class", "alert alert-danger alert-dismissible fade show hidden");
+
     } catch (err) {
         if (!error.offsetParent) {
             error.removeAttribute("class");
             error.removeAttribute("aria-hidden");
             error.setAttribute("class", "alert alert-danger alert-dismissible fade show");
-        }
-        else {
-            error.setAttribute("aria-hidden", "true");
         }
         console.dir(err);
     }
