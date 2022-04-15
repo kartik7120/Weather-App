@@ -1,6 +1,6 @@
 const btn = document.querySelector("#btn");
 const cityName = document.querySelector("#city");
-const apiKey = "kA2HNDyEcYGUMk9ISpB4BWV95Hc4A3SE";
+const apiKey = "ptkr8nbSpe53uVyGx7oAqYRcHAPoVozQ";
 const ul = document.querySelector("#WeatherInformation");
 let cityObject; let cityKey;
 const LinkDiv = document.querySelector("#WeatherLinks");
