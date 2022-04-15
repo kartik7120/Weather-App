@@ -89,3 +89,8 @@ h1 {
     justify-content: space-around;
   }
 }
+
+#error {
+  width: 30em;
+  margin: 0 auto;
+}

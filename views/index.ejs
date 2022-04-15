@@ -2,17 +2,17 @@
 
     <div class="container">
         <h1 class="text-center">Weather App</h1>
-
-        <!-- <form action="/" class="validated-form" novalidate id="form"> -->
+        <div class="alert alert-danger alert-dismissible fade show hidden" role="alert" id="error" aria-hidden="true">
+            Please enter a <strong>valid</strong> city name
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <div class="mb-3 text-center">
             <label for="city" class="form-label">Enter your city</label>
             <input type="text" name="city" class="form-control" id="city" placeholder="Enter your city"
                 aria-describedby="CityName" required>
             <button type="button" class="btn btn-danger mt-3" id="btn">Submit</button>
         </div>
-        <!-- </form> -->
         <div class="mt-3 container" id="top-widget">
-            <!-- <div class="col-6"> -->
             <div class="card mb-3 hidden weather" id="card">
                 <div class="row ">
                     <div class="col-md-4" id="Icon"></div>
@@ -29,10 +29,7 @@
                         <ul class="list-group list-group-flush lead" id="WeatherInformation"></ul>
                     </div>
                 </div>
-                <!-- </div> -->
             </div>
-            <!-- <div class="col-6"> -->
-            <!-- Right Widget -->
             <div class="card text-center hidden" id="Right-Widgit">
                 <div class="card-header">
                     Featured
@@ -58,13 +55,11 @@
                             <p id="Pressure" class="lead"></p>
                         </div>
                     </div>
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                 </div>
                 <div class="card-footer text-muted">
                     Powered by <a href="https://developer.accuweather.com/" target="_blank">AccuWeather</a>
                 </div>
             </div>
-            <!-- </div>/ -->
         </div>
         <div class="mt-3 container" id="bottom-widget">
             <div class="card text-center mt-5 hidden" id="DayOneDayForecast">
@@ -73,7 +68,6 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title" id="LongPhraseDay"></h5>
-                    <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
                     <div class="flex-container">
                         <div>
                             <img src="/Nicons/rain.png" class="img-fluid mb-3" alt="Icon of rain">

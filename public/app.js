@@ -1,6 +1,6 @@
 const btn = document.querySelector("#btn");
 const cityName = document.querySelector("#city");
-const apiKey = "";
+const apiKey = "ptkr8nbSpe53uVyGx7oAqYRcHAPoVozQ";
 const ul = document.querySelector("#WeatherInformation");
 let cityObject; let cityKey;
 const LinkDiv = document.querySelector("#WeatherLinks");
@@ -8,7 +8,7 @@ const cityHead = document.querySelector("#LocalizedName");
 const WeatherDescription = document.querySelector("#WeatherDescription");
 const card = document.querySelector("#card");
 const icon = document.querySelector("#Icon");
-// const displayDate = document.querySelector("#Date");
+const error = document.querySelector("#error");
 const geolocation = document.querySelector("#geolocation");
 const pressure = document.querySelector("#Pressure");
 const windDirectionAngle = document.querySelector("#windDirectionAngle");
@@ -181,8 +181,15 @@ btn.addEventListener("click", async (e) => {
             console.log(localStorage.getItem("cityName"));
         }
 
-    } catch (error) {
-        
-        console.log(error);
+    } catch (err) {
+        if (!error.offsetParent) {
+            error.removeAttribute("class");
+            error.removeAttribute("aria-hidden");
+            error.setAttribute("class", "alert alert-danger alert-dismissible fade show");
+        }
+        else {
+            error.setAttribute("aria-hidden", "true");
+        }
+        console.dir(err);
     }
 })
