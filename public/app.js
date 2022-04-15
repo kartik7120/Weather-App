@@ -182,6 +182,7 @@ btn.addEventListener("click", async (e) => {
         }
 
     } catch (error) {
+        
         console.log(error);
     }
 })
