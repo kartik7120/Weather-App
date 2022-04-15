@@ -50,7 +50,6 @@ btn.addEventListener("click", async (e) => {
         cityKey = cityObject.Key;
         console.log("CITY KEY = ", cityKey);
         const type = cityObject.Type;
-        // console.log(cityKey);
         const response2 = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}&details=true&type=${type}`, { mode: 'cors' })
         console.log(response2);
         const cityWeather = await response2.json();
@@ -76,7 +75,6 @@ btn.addEventListener("click", async (e) => {
         li8.textContent = `CloudCover : ${cityWeather[0].CloudCover}`;
         li8.innerHTML += ` <img src="/Nicons/cloud-computing.png" class="img-fluid" id="unit" alt="A gif of a son">`;
         const DesktopLink = cityWeather[0].Link;
-        const MoblieLink = cityWeather[0].MoblieLink;
         li6.innerHTML = `<a href="${DesktopLink}">Desktop Link</a>`;
         li1.setAttribute("class", "list-group-item");
         li3.setAttribute("class", "list-group-item");
@@ -142,7 +140,6 @@ btn.addEventListener("click", async (e) => {
         const snowValue = dayForecast.Snow.Value;
         const snowUnit = dayForecast.Snow.Unit;
 
-        const iconPhrase = dayForecast.IconPhrase;
 
         const WindGustDirection = `${dayForecast.WindGust.Direction.Degrees} ${dayForecast.WindGust.Direction.English}`;
         const WindGustSpeed = `${dayForecast.WindGust.Speed.Value} ${dayForecast.WindGust.Speed.Unit}`;
@@ -156,8 +153,6 @@ btn.addEventListener("click", async (e) => {
 
         const snowValueNight = nightForecast.Snow.Value;
         const snowUnitNight = nightForecast.Snow.Unit;
-
-        const iconPhraseNight = nightForecast.IconPhrase;
 
         longPhraseDayText.textContent = `${longPhrase}`;
         longPhraseNightText.textContent = `${longPhraseNight}`;
